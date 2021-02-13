@@ -19,8 +19,8 @@ on:
 jobs:
   create-new-branch:
     name: Create new branch
-    with:
-      token: "${{ secrets.GITHUB_TOKEN }}"
+    # with:
+    #   token: "${{ secrets.GITHUB_TOKEN }}"
     runs-on: ubuntu-latest
     steps:
       - name: checkout to this branch
@@ -28,6 +28,14 @@ jobs:
 
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
+
+      - name: echo secrest
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }}
+          echo ${{ secrets.GITHUB_ACTOR }}
+          echo ${{ secrets.GITHUB_REF }}
+          echo ${{ secrets.GITHUB_REPOSITORY }}
+
       # check for the branch
       - name: List branches
         shell: bash
