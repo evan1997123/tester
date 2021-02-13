@@ -19,6 +19,8 @@ on:
 jobs:
   create-new-branch:
     name: Create new branch
+    with:
+      token: "${{ secrets.GITHUB_TOKEN }}"
     runs-on: ubuntu-latest
     steps:
       - name: checkout to this branch
