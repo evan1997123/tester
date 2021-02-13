@@ -11,6 +11,6 @@ git checkout evanlovescodio
 echo "Goodbye, world!\n" >> ./a.txt
 echo "after appending"
 cat ./a.txt
-git add .
-git commit -m "Added goodbye world to a.txt in branch evanlovescodio"
+# git add .
+# git commit -m "Added goodbye world to a.txt in branch evanlovescodio"
 # git push origin evanlovescodio

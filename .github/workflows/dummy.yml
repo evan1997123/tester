@@ -31,6 +31,14 @@ jobs:
         shell: bash
         run: |
           ./.github/workflows/test.sh
+          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+          git pull github ${GITHUB_REF} --ff-only
+
+          git add -A
+
+          git commit -m "Update a.txt in evanlovescodio branch"
+          git push github HEAD:${GITHUB_REF}
+      # https://github.community/t/how-does-one-commit-from-an-action/16127/3
       #     git fetch
       #     echo "============================================"
       #     echo "list both remote-tracking and local branches"
