@@ -1,16 +1,16 @@
 name: Create new branch and add text
 
-on: 
+on:
   push:
-    branches:    
-        # Push events on main branch
-        - main
-        # Push events to branches matching refs/heads/releases/10
-        - 'releases/**'
+    branches:
+      # Push events on main branch
+      - main
+      # Push events to branches matching refs/heads/releases/10
+      - "releases/**"
       # Sequence of patterns matched against refs/tags
-      tags:        
-        - v1             # Push events to v1 tag
-        - v1.*           # Push events to v1.0, v1.1, and v1.9 tags
+    tags:
+      - v1 # Push events to v1 tag
+      - v1.* # Push events to v1.0, v1.1, and v1.9 tags
   release:
     types: # This configuration does not affect the page_build event above
       - created
@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: checkout to this branch
       - uses: actions/checkout@v2
-      
+
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       # check for the branch
@@ -40,7 +40,6 @@ jobs:
       #     echo "list remote-tracking branches"
       #     git branch -r
       #     echo "============================================"
-          
       # - name: create branch if necessary
       # if: #if evanlovescodio is NOT in list of branches #${{ !github.event.issue.pull_request }}
       # uses: peterjgrainger/action-create-branch@v2.0.1
@@ -48,11 +47,9 @@ jobs:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   with:
       #     branch: 'evanlovescodio'
-     
       # env:
       #   MY_NAME: Evan Sum
       # run: |
       #   echo $MY_NAME
       #   curl "https://www.google.com/"
       #   #cmd line code to append lines to code.
-        
