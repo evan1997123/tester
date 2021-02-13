@@ -40,20 +40,9 @@ jobs:
       - name: List branches
         shell: bash
         env:
-          VAR1: ${{ github.actor }}
+          CURRENT_USER: ${{ github.actor }}
         run: |
           ./.github/workflows/test.sh
-
-          # git config --global user.email "actions@github.com"
-          # git config --global user.name "GitHub Actions"
-          git add -A
-
-          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "why hello there" --author="$VAR1 <$VAR1@users.noreply.github.com>"
-
-          # git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-          git pull --ff-only
-
-          git push -u "HEAD:evanlovescodio"
       # https://github.community/t/how-does-one-commit-from-an-action/16127/3
       #     git fetch
       #     echo "============================================"

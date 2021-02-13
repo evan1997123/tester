@@ -11,6 +11,19 @@ git checkout evanlovescodio
 echo "Goodbye, world!\n" >> ./a.txt
 echo "after appending"
 cat ./a.txt
-# git add .
-# git commit -m "Added goodbye world to a.txt in branch evanlovescodio"
-# git push origin evanlovescodio
+
+echo git branch
+git add -A
+
+git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "why hello there" --author="$CURRENT_USER <$CURRENT_USER@users.noreply.github.com>"
+
+if [[ `git branch -r 2>&1` = *evanlovescodio* ]]; then
+    echo "pull evanlovescodio"
+    git pull origin evanlovescodio --ff-only
+    PUSH_OPT=""
+else
+    echo "no need to pull evanlovescodio"
+    PUSH_OPT="-u"
+fi
+
+git push ${PUSH_OPT} "origin/evanlovescodio"
