@@ -48,7 +48,7 @@ jobs:
           # git config --global user.name "GitHub Actions"
           git add -A
 
-          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "why hello there" --author="$VAR1"
+          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "why hello there" --author="$VAR1@users.noreply.github.com"
 
           # git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
           git pull origin --ff-only
