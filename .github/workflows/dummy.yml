@@ -33,23 +33,27 @@ jobs:
         run: |
           echo This is a test
           echo ${{ secrets.GITHUB_TOKEN }}
-          echo ${{ secrets.GITHUB_ACTOR }}
-          echo ${{ secrets.GITHUB_REF }}
-          echo ${{ secrets.GITHUB_REPOSITORY }}
           echo ${{ github.actor }}
+          echo ${{ github.email }}
 
       # check for the branch
       - name: List branches
         shell: bash
+        env:
+          VAR1: ${{ github.actor }}
         run: |
           ./.github/workflows/test.sh
-          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-          git pull github ${GITHUB_REF} --ff-only
 
+          # git config --global user.email "actions@github.com"
+          # git config --global user.name "GitHub Actions"
           git add -A
 
-          git commit -m "Update a.txt in evanlovescodio branch"
-          git push github HEAD:${GITHUB_REF}
+          git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "why hello there" --author="$VAR1"
+
+          # git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+          git pull origin --ff-only
+
+          git push -u "HEAD:evanlovescodio"
       # https://github.community/t/how-does-one-commit-from-an-action/16127/3
       #     git fetch
       #     echo "============================================"
