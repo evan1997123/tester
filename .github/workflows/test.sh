@@ -26,4 +26,4 @@ else
     PUSH_OPT="-u"
 fi
 
-git push ${PUSH_OPT} "origin/evanlovescodio"
+git push ${PUSH_OPT} origin evanlovescodio
