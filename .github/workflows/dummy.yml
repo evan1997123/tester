@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout to this branch
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
