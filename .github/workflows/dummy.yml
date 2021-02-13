@@ -31,10 +31,12 @@ jobs:
 
       - name: echo secrest
         run: |
+          echo This is a test
           echo ${{ secrets.GITHUB_TOKEN }}
           echo ${{ secrets.GITHUB_ACTOR }}
           echo ${{ secrets.GITHUB_REF }}
           echo ${{ secrets.GITHUB_REPOSITORY }}
+          echo ${{ github.actor }}
 
       # check for the branch
       - name: List branches
