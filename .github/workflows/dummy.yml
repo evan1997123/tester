@@ -13,7 +13,7 @@ on:
       - v1 # Push events to v1 tag
       - v1.* # Push events to v1.0, v1.1, and v1.9 tags
   release:
-    types: # This configuration does not affect the page_build event above
+    types:
       - created
 
 jobs:
@@ -30,9 +30,7 @@ jobs:
       - name: List branches
         shell: bash
         run: |
-          echo "Hello Evan Sum ~ Swag money"
-          git fetch
-          git branch -a
+          ./.github/workflows/test.sh
       #     git fetch
       #     echo "============================================"
       #     echo "list both remote-tracking and local branches"
