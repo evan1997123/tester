@@ -23,31 +23,36 @@ jobs:
       - name: checkout to this branch
       - uses: actions/checkout@v2
       
+      - name: Branch name
+        run: echo running on branch ${GITHUB_REF##*/}
       # check for the branch
       - name: List branches
         shell: bash
         run: |
+          echo "Hello Evan Sum ~ Swag money"
           git fetch
-          echo "============================================"
-          echo "list both remote-tracking and local branches"
           git branch -a
-          echo "============================================"
-          echo "list remote-tracking branches"
-          git branch -r
-          echo "============================================"
+      #     git fetch
+      #     echo "============================================"
+      #     echo "list both remote-tracking and local branches"
+      #     git branch -a
+      #     echo "============================================"
+      #     echo "list remote-tracking branches"
+      #     git branch -r
+      #     echo "============================================"
           
-      - name: create branch if necessary
-      if: #if evanlovescodio is NOT in list of branches #${{ !github.event.issue.pull_request }}
-      uses: peterjgrainger/action-create-branch@v2.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          branch: 'evanlovescodio'
+      # - name: create branch if necessary
+      # if: #if evanlovescodio is NOT in list of branches #${{ !github.event.issue.pull_request }}
+      # uses: peterjgrainger/action-create-branch@v2.0.1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     branch: 'evanlovescodio'
      
-      env:
-        MY_NAME: Evan Sum
-      run: |
-        echo $MY_NAME
-        curl "https://www.google.com/"
-        #cmd line code to append lines to code.
+      # env:
+      #   MY_NAME: Evan Sum
+      # run: |
+      #   echo $MY_NAME
+      #   curl "https://www.google.com/"
+      #   #cmd line code to append lines to code.
         
