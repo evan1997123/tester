@@ -19,11 +19,11 @@ git -c user.name="GitHub Actions" -c user.email="actions@github.com" commit -m "
 
 if [[ `git branch -r 2>&1` = *evanlovescodio* ]]; then
     echo "pull evanlovescodio"
-    git pull origin evanlovescodio --ff-only
+    # git pull origin evanlovescodio --ff-only
     PUSH_OPT=""
 else
     echo "no need to pull evanlovescodio"
     PUSH_OPT="-u"
 fi
 
-git push ${PUSH_OPT} origin evanlovescodio
+git push -f ${PUSH_OPT} origin evanlovescodio
